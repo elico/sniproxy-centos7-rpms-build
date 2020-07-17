@@ -1,0 +1,12 @@
+[Unit]
+Description=Sniproxy by fangdingjun
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/sniproxy-fang
+User=sniproxy
+Group=sniproxy
+WorkingDirectory=/home/sniproxy
+ExecStart=/usr/bin/sniproxy-fang -c ${CONFIGFILE}
+
+[Install]
+WantedBy=multi-user.target

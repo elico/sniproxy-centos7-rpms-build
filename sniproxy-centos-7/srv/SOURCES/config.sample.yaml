@@ -1,0 +1,34 @@
+
+
+#timeout: 10
+#
+
+# default destination
+# when no SNI name found 
+# or parse TLS HELLO message failed
+default: 127.0.0.1:8443
+
+# the port listen on
+# can specify multiple ports
+listen:
+    - 443
+    - 9999
+
+# forward rules
+# exact match or wildcard match
+forward_rules:
+    # www.example.com forward to 127.0.0.1:8443
+    # send proxy protocol v2 header
+    www.example.com: 127.0.0.1:8443 proxy-v2
+
+    # b.example.com forward to 127.0.0.1:8541
+    # send proxy protocol v1 header
+    b.example.com: 127.0.0.1:8541 proxy-v1
+    
+    # b.example.com forward to 127.0.0.1:8541
+    # no proxy protocol header send
+    b.example.com: 127.0.0.1:8542
+
+    # forward by SNI, wildcard 
+    # ex: SNI a.example.com from port 9999 forward to a.example.com:443
+    "*:9999": "*:443"

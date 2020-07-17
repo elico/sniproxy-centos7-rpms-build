@@ -1,0 +1,3 @@
+CONFIGFILE=/etc/sniproxy-fang/config.yaml
+USER=sniproxy
+GROUP=sniproxy
